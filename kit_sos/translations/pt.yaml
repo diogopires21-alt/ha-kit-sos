@@ -1,0 +1,22 @@
+configuration:
+  language:
+    name: Idioma
+    description: "auto usa o idioma do Home Assistant; pt ou en forçam um idioma."
+  notify_enabled:
+    name: Avisos de validade
+    description: Envia um aviso por artigo quando a validade se aproxima.
+  notify_days:
+    name: Dias de antecedência
+    description: Quantos dias antes da validade é enviado o aviso (por defeito 30).
+  notify_time:
+    name: Hora do aviso
+    description: Hora diária (HH:MM) a que a app verifica as validades e envia os avisos.
+  notify_service:
+    name: Serviço de aviso
+    description: "Ação do Home Assistant usada para avisar. Ex.: telegram_bot.send_message, notify.mobile_app_iphone, persistent_notification.create"
+  notify_target:
+    name: Destinatário (opcional)
+    description: "Opcional. Para o Telegram, o chat_id (vários separados por vírgula). Vazio usa o destino por defeito."
+  sensors:
+    name: Sensores no Home Assistant
+    description: Cria os sensores sensor.kit_sos_expiring, sensor.kit_sos_expired, sensor.kit_sos_low_stock e sensor.kit_sos_items.

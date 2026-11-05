@@ -1,0 +1,22 @@
+configuration:
+  language:
+    name: Language
+    description: "auto follows Home Assistant's language; pt or en force one."
+  notify_enabled:
+    name: Expiry alerts
+    description: Sends one alert per item when its expiry date is getting close.
+  notify_days:
+    name: Days of notice
+    description: How many days before expiry the alert is sent (default 30).
+  notify_time:
+    name: Alert time
+    description: Daily time (HH:MM) when the app checks expiry dates and sends alerts.
+  notify_service:
+    name: Notification action
+    description: "Home Assistant action used for alerts, e.g. telegram_bot.send_message, notify.mobile_app_iphone, persistent_notification.create"
+  notify_target:
+    name: Target (optional)
+    description: "Optional. For Telegram, the chat_id (comma-separated for several). Empty uses the default target."
+  sensors:
+    name: Home Assistant sensors
+    description: Creates sensor.kit_sos_expiring, sensor.kit_sos_expired, sensor.kit_sos_low_stock and sensor.kit_sos_items.
