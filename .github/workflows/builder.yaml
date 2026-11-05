@@ -10,6 +10,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -41,8 +42,8 @@ jobs:
         run: |
           changed_apps=()
 
-          # If the workflow file itself changed, rebuild all apps
-          if [[ "${CHANGED_FILES}" =~ \.github/workflows/(builder|build-app)\.yaml ]]; then
+          # Manual run, or the workflow file itself changed: rebuild all apps
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" || "${CHANGED_FILES}" =~ \.github/workflows/(builder|build-app)\.yaml ]]; then
             changed_apps=(${APPS})
           else
             for app in ${APPS}; do
@@ -77,5 +78,5 @@ jobs:
     uses: ./.github/workflows/build-app.yaml
     with:
       app: ${{ matrix.app }}
-      publish: ${{ github.event_name == 'push' }}
+      publish: ${{ github.event_name != 'pull_request' }}
     secrets: inherit
